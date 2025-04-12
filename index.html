@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omkar Lokhande - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- [Previous HTML content remains the same until before closing body tag] -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo"><img  src="logo.png" width="80"></a>
+            
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('skills')">Skills</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <!-- <li><a href="#" onclick="showPage('contact')">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const header = document.querySelector('.header');
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            header.classList.toggle('menu-active');
+            
+            // Toggle aria-expanded for accessibility
+            const isExpanded = hamburger.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-active');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                header.classList.remove('menu-active');
+                hamburger.setAttribute('aria-expanded', false);
+            }
+        });
+
+        // Prevent menu from closing when clicking inside
+        navMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+
+    <div id="home" class="page active">
+        <div class="hero-content">
+            <h1 style="text-align:left;margin-top:100px">Hello, I'm <br><div style="margin-top: 0px">Omkar Lokhande</div></h1>
+            <div>
+                <p style="text-align: justify;">I'm an <b style="color:#ff5763">Data Scientist</b> at Reliance Jio Platforms 
+                    Limited, specializing in Generative AI, Machine Learning, and Deep Learning. 
+                    I build scalable AI-driven solutions including  deep learning models,intelligent agents and RAG-based chatbots.I’m passionate about transforming cutting-edge AI research into practical, business-ready innovations.</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="mailto:omkarlokhande425@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/omkar-lokhande-059635204/"><i class="fab fa-linkedin"></i></a>
+                <a href="tel:+919309944683"><i class="fas fa-phone"></i></a>
+                <a href="https://github.com/Omkar4141"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2 style="color:#ff5763">About Me</h2>
+                <p style="text-align: justify;">I am Omkar Lokhande, an Data Scientist at Jio Platforms Limited, where I develop, fine-tune, and optimize deep learning models to build cutting-edge AI-powered solutions. Leveraging Generative AI, Large Language Models (LLMs), and open-source innovations, I specialize in creating Retrieval-Augmented Generation (RAG) chatbots, AI innovation pipelines, and robust machine learning systems aligned with business goals.</p>
+                <p style="text-align: justify;">My work focuses on designing and deploying intelligent applications — from enhancing knowledge retrieval with RAG architectures to building scalable and efficient AI workflows that drive real-world impact. I am passionate about delivering solutions that bridge the gap between advanced research and practical engineering.</p>
+                <p style="text-align: justify;">I enjoy building solutions that solve real-world problems.With every project, I aim to combine cutting-edge research with practical engineering to create scalable, impactful systems.</p>
+                <p style="text-align: justify;">Let’s connect to collaborate on transformative AI projects or spark exciting conversations around the future of technology!</p>
+            </div>
+        </div>
+        <br><br>
+        <section class="history-container">
+    
+
+            <!-- Timeline -->
+            <div class="history">
+              <div class="history-line"></div>
+              <div class="history-item highlight" data-slide="0">
+                <div class="history-title">Data Scientist @ Jio Platforms ltd. </div>
+              </div>
+              <!-- <div class="history-item" data-slide="1">
+                <div class="history-title">Web Developer Intern</div>
+              </div> -->
+              <div class="history-item" data-slide="2">
+                <div class="history-title">Education </div>
+              </div>
+            </div>
+        
+            <!-- Content Section -->
+            <div class="details-section">
+              <div class="details highlight-content">
+                <h2>Associate Data Scientist:(October 2023 To  April 2025)</h2>
+                <ul>
+                    <li><strong>Engineered AI-driven Solutions: </strong> Developed AI-driven solutions for Reliance Jio’s use cases, leveraging cutting-edge Generative AI technologies and open-source LLMs to drive innovation and align with industry trends.</li>
+                    <li><strong>Developed RAG-based Chatbot for Information Security: </strong> Engineered a Retrieval-Augmented Generation (RAG) chatbot using Llama 3.3 as an on-premise LLM, achieving 96% response accuracy. Integrated semantic caching, reducing LLM calls by 25% for improved efficiency.</li>
+                    <li><strong>Built Data Ingestion Pipeline for Milvus: </strong>Created a data ingestion pipeline for Milvus to efficiently insert vector embeddings into the database, utilizing Alibaba’s GTELarge embedding model and achieving a processing speed of 3 seconds per document.</li>
+                    <li><strong>Integrated Langfuse for Real-time Monitoring: </strong> Implemented Langfuse into the RAG chatbot for real-time monitoring and tracking of chatbot responses, enabling production-level prompt control and delivering actionable insights.</li>
+                    <li><strong>Developed Evaluation Pipeline with Uptrain & REGAS:</strong> Built an evaluation pipeline using Uptrain and REGAS to assess chatbot responses, achieving a processing speed of 4 queries per second, optimizing performance.</li>
+                    <li><strong>Designed Sentiment-aware Summarization Tool: </strong>Built a sentiment-aware summarization tool for the Jio Media team, analyzing and summarizing Internet posts related to Reliance, boosting business performance by 30% and addressing customer queries.</li>
+                    <li><strong>Strengthened Adversarial Prompt Generation: </strong>Fine-tuned the Mistral model for adversarial prompt generation, increasing the success rate of generating adversarial responses from 30% pre-tuning to 85% post-tuning.</li>
+                    <li><strong>Streamlined Gen AI Application Deployment: </strong>Automated CI/CD workflows to streamline the deployment process of Generative AI applications and tools, enhancing operational efficiency.</li>
+                </ul>
+                
+              </div>
+              <!-- <div class="details">
+                <h2>Web Developer Intern @ Sahu Technology</h2>
+                <ul>
+                    <li><strong>Web Developer Intern at Sahu Technology</strong> – Developed and enhanced features for a blog application using Django.</li>
+                    <li><strong>Implemented Comment Like Feature</strong> – Added functionality for users to like comments, improving engagement and user interaction.</li>
+                    <li><strong>Collaborated with Development Team</strong> – Assisted in debugging, testing, and refining application features.</li>
+                </ul>
+                
+              </div> -->
+              <div class="details">
+                <h2>Bachelors of Engineering</h2>
+                <ul>
+                    <li>Savitribai Phule Pune University : July - 2019 To May - 2023 </li>
+                    <li>BE - Computer Engineering</li>
+                    <li>CGPA : 9.56</li>
+                </ul>
+                <h2>Higher Secondary Education</h2>
+                <ul>
+                    <li>Maharastra State Board : February - 2019 </li>
+                    <li>Grade : 78 % </li>
+                </ul>
+                <h2>Secondary Education</h2>
+                <ul>
+                    <li>Maharastra State Board : March - 2017 </li>
+                    <li>Grade : 89.60 % </li>
+                </ul>
+                
+              </div>
+              <div class="details">
+                <h2>Future Aspirations</h2>
+                <ul>
+                  <li>Continue pushing AI boundaries.</li>
+                  <li>Focus on ethical AI and bias reduction.</li>
+                  <li>Improve model efficiency and automation.</li>
+                </ul>
+              </div>
+            </div>
+        
+          </section>
+        
+          <script>
+            const historyItems = document.querySelectorAll('.history-item');
+            const details = document.querySelectorAll('.details');
+        
+            function updateHighlightContent(index) {
+              // Remove highlight class from all
+              historyItems.forEach(item => item.classList.remove('highlight'));
+              details.forEach(content => content.classList.remove('highlight-content'));
+        
+              // Add highlight class to the selected content & marker
+              historyItems[index].classList.add('highlight');
+              details[index].classList.add('highlight-content');
+            }
+        
+            historyItems.forEach((item, index) => {
+              item.addEventListener('click', () => updateHighlightContent(index));
+            });
+        
+          </script>
+    </div>
+
+    <div id="skills" class="page">
+        <div class="skills-container">
+            <h2 style="color: #ff5763;">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming</h3>
+                    <p>Python, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Machine and Deep Learning</h3>
+                    <p>Pandas, Numpy, Matplotlib , Seaborn ,Scikit Learn, MLflow, TensorFlow, PyTorch,NLP</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Generative AI </h3>
+                    <p>Open Source LLM's ,Retrieval Augmented Generation, Prompt Engineering, LangChain , Vector Database - Milvus,  Langfuse & UpTrain, Agentic AI - LangGraph & Autogen, Safe AI </p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h3>DevOps</h3>
+                    <p>Azure DevOps, docker ,Git, CI/CD </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="page">
+        <h1 style="color: #ff5763 ;margin-top:2rem">Featured Projects</h1>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Information Security Chatbot</h3>
+                    <p>Engineered a Retrieval-Augmented Generation (RAG) chatbot using Llama 3.3 as an on-premise LLM, achieving 96% response accuracy. Integrated semantic caching, reducing LLM calls by 25% for improved efficiency.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Sentiment-aware Summarization Tool</h3>
+                    <p>Built a sentiment-aware summarization tool for the Jio Media team, analyzing and summarizing Internet posts related to Reliance, boosting business performance by 30% and addressing customer queries.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Prompt Injection Detection Suite</h3>
+                    <p>A fine-tuned model that produced over 10K adversarial prompts and detected 25% more vulnerabilities than previous solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <h2>Get In Touch</h2>
+        <div class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+        
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+        }
+        
+        // Handle form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully!');
+        });
+        
+        // Initially show only the home section
+        document.addEventListener("DOMContentLoaded", function () {
+            showPage('home'); // Ensure the home page is visible on load
+        });
+        
+        
+    </script>
+    <!-- Add Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h3>Let's Chat!</h3>
+                <button class="close-chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages">
+                <div class="message bot">
+                    Hello! How can I assist you with information about Omkar Lokhande today?
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message...">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+     const API_KEY = "AIzaSyBIYmugXDtCqb0_9VuimK8Lfn4Q7otInyE";
+const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY;
+
+const chatToggle = document.querySelector('.chat-toggle');
+const chatContainer = document.querySelector('.chat-container');
+const closeChat = document.querySelector('.close-chat');
+const chatInput = document.querySelector('.chat-input input');
+const chatSend = document.querySelector('.chat-input button');
+const chatMessages = document.querySelector('.chat-messages');
+
+chatToggle.addEventListener('click', () => {
+    chatContainer.style.display = 'flex';
+    chatToggle.style.display = 'none';
+});
+
+closeChat.addEventListener('click', () => {
+    chatContainer.style.display = 'none';
+    chatToggle.style.display = 'flex';
+});
+
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    addMessage('user', message);
+    chatInput.value = '';
+    
+    const SYSTEM_PROMPT = `<system_prompt>
+        You are an AI assistant tasked with providing detailed and accurate information about Omkar Lokhande.
+Here is Omkar's professional profile:
+If the user input is a greeting (e.g., "hi", "hello", "hey", "good morning", "good afternoon", etc.), respond with:
+"Hello! How can I assist you with information about Omkar Lokhande today?"
+
+## Personal Information:
+- Full Name: Omkar Lokhande
+- Email: omkarlokhande425@gmail.com
+- Contact: 9309944683
+- LinkedIn: https://www.linkedin.com/in/omkar-lokhande-059635204/
+- GitHub: https://github.com/Omkar4141
+
+## Professional Experience:
+### Reliance Jio Platforms Limited, Associate Data Scientist
+- Duration: October 2023 – Present
+- Engineered AI-driven solutions for Reliance Jio use cases using Generative AI and open-source LLMs.
+- Developed a RAG (Retrieval Augmented Generation) chatbot for the Information Security team using Llama 3.3 as an on-premise LLM, achieving 96% response accuracy.
+- Implemented semantic caching to reduce LLM calls by 25%, ensuring consistent and efficient responses.
+- Built a data ingestion pipeline for Milvus using Alibaba’s GTELarge embedding model, achieving a processing speed of 3 seconds per document.
+- Integrated Langfuse into the RAG chatbot for real-time monitoring and response tracking.
+- Developed an evaluation pipeline using Uptrain and REGAS, achieving a processing speed of 4 queries per second.
+- Built a PDF parser using a fine-tuned YOLO model to extract key data and visuals, reducing content redundancy by 50% and improving extraction accuracy by 30%.
+- Designed a sentiment-aware summarization tool for the Jio Media team to analyze and summarize Internet posts related to Reliance, improving business performance by 30%.
+- Fine-tuned the Mistral model to strengthen adversarial prompt generation, increasing success rates from 30% to 85%.
+- Automated CI/CD workflows to streamline the deployment of Gen AI applications.
+
+## Technical Skills:
+- Languages: Python, SQL
+- AI/ML: Machine Learning, Deep Learning, NLP, Generative AI, RAG
+- Frameworks: LangChain, PyTorch, TensorFlow, Scikit-Learn
+- Tools: Docker, Git, FastAPI, Azure DevOps
+- Vector Databases: Milvus
+- LLMOps: Langfuse, UpTrain
+- Agentic AI: LangGraph, Autogen
+- Safe AI Practices
+### Total year of experiance is 1.5 years
+## Projects:
+### Autism Spectrum Disorder Detection
+- Developed a machine learning model for early autism detection with 96% accuracy.
+- Analyzed social skills, communication, and behavioral patterns across age groups using a diverse dataset.
+- Compared the performance of SVM, Logistic Regression, Random Forest, and Decision Tree classifiers.
+
+## Education:
+- Savitribai Phule Pune University, BE - Computer Engineering-CGPA: 9.56 (July 2019 – May 2023) 
+- 12th / HSC -> Nav Maharashtra Junior Collage  Percentage: 78 %
+- 10th / SSC -> Nav Maharashtra Vidhyalay Pandare  Percentage : 89.50 %
+
+## Certifications:
+- Python Programming
+- Machine Learning
+- Generative AI with LLMs
+- Git 
+
+You should strictly answer questions about Omkar Lokhande based on this information. 
+If a question is asked that is unrelated to Omkar Lokhande, respond with:
+"I'm sorry, I can only provide information about Omkar Lokhande. Please ask about Omkar."
+
+</system_prompt>
+`;
+    
+  const requestBody = {
+        contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
+    };
+    
+    try {
+        const response = await fetch(GEMINI_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody)
+        });
+        
+        const data = await response.json();
+        console.log("Gemini Response:", data);
+        
+        if (data && data.candidates && data.candidates.length > 0) {
+            addMessage('bot', data.candidates[0].content.parts[0].text);
+        } else {
+            addMessage('bot', "No valid response received.");
+        }
+    } catch (error) {
+        console.error("Error fetching response:", error);
+        addMessage('bot', "Error fetching response. Please try again.");
+    }
+}
+
+function addMessage(type, content) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', type);
+    messageDiv.textContent = content;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+</body>
+</html>
