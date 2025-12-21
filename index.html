@@ -274,32 +274,26 @@
         
         
     </script>
-    <!-- Add Chat Widget -->
-    <div class="chat-widget">
-        <button class="chat-toggle">
-            <i class="fas fa-comments"></i>
-        </button>
-        <div class="chat-container">
-            <div class="chat-header">
-                <h3>Let's Chat!</h3>
-                <button class="close-chat">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-messages">
-                <div class="message bot">
-                    Hello! How can I assist you with information about Omkar Lokhande today?
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Type your message...">
-                <button>Send</button>
-            </div>
+   <!-- Chat Widget -->
+<div class="chat-widget">
+    <button class="chat-toggle"><i class="fas fa-comments"></i></button>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h3>Let's Chat!</h3>
+            <button class="close-chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages">
+            <div class="message bot">Hello! How can I assist you with information about Omkar Lokhande today?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
         </div>
     </div>
-    <script>
+</div>
 
-     const API_KEY = "AIzaSyDH73pYfyNCR__3vnvjtpodJcMky2BsOqY";
+<script>
+const API_KEY = "AIzaSyDH73pYfyNCR__3vnvjtpodJcMky2BsOqY";
 const GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + API_KEY;
 
 const chatToggle = document.querySelector('.chat-toggle');
@@ -330,8 +324,8 @@ async function sendMessage() {
 
     addMessage('user', message);
     chatInput.value = '';
-    
-    const SYSTEM_PROMPT = `<system_prompt>
+
+    const SYSTEM_PROMPT =  `<system_prompt>
         You are an AI assistant tasked with providing detailed and accurate information about Omkar Lokhande.
 Here is Omkar's professional profile:
 If the user input is a greeting (e.g., "hi", "hello", "hey", "good morning", "good afternoon", etc.), respond with:
@@ -427,23 +421,19 @@ If a question is asked that is unrelated to Omkar Lokhande, respond with:
 
 </system_prompt>
 `;
-    
-  const requestBody = {
-        contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\n\nUser Query: ${message}` }] }]
+
+    const requestBody = {
+        contents: [{ parts: [{ text: SYSTEM_PROMPT + "\n\nUser Query: " + message }] }]
     };
-    
+
     try {
         const response = await fetch(GEMINI_URL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestBody)
         });
-        
+
         const data = await response.json();
-        console.log("Gemini Response:", data);
-        
         if (data && data.candidates && data.candidates.length > 0) {
             addMessage('bot', data.candidates[0].content.parts[0].text);
         } else {
